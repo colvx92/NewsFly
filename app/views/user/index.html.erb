@@ -1,0 +1,37 @@
+<div class="container-top">
+<h1>NewsFly</h1>
+<p class="ex">example: ars technica</p>
+
+<%= render 'form' %>
+<p></p>
+
+
+
+  <!-- <%= @articles.inspect %> -->
+
+  <!-- <% 20.times do %>
+    <%= "*" %>
+  <% end %>
+
+  <p><%= "*"*20 %></p>
+  <p><%= "*"*20 %></p>
+  <p><%= "*"*20 %></p> -->
+</div>
+<div class="container-body">
+  <% if @articles.blank? %>
+    <h1>BREHH THAT'S NOT A NEWS SOURCE!</h1>
+  <% else %>
+    <% @articles.each do |article| %>
+      <div class="container-text">
+        <%= link_to article["title"], article["url"] %>
+        <p></p>
+        <% unless article["urlToImage"].blank? %>
+        <%= link_to article["url"] do %>
+        <%= image_tag article["urlToImage"] %>
+        <% end %>
+        <p></p>
+        <% end %>
+      </div>
+    <% end %>
+  <% end %>
+</div>
