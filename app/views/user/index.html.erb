@@ -20,22 +20,29 @@
 <div class="container-body">
     <% if params[:source].blank? %>
       <h1>Search!</h1>
-        <% else %>
-      <% if @articles == nil %>
-        <h1>BREHH THAT'S NOT A NEWS SOURCE!</h1>
-        <% else %>
-        <% @articles.each do |article| %>
-          <div class="container-text">
-            <%= link_to article["title"], article["url"] %>
-            <p></p>
-            <% unless article["urlToImage"].blank? %>
-              <%= link_to article["url"] do %>
-                <%= image_tag article["urlToImage"] %>
-              <% end %>
-              <p></p>
-            <% end %>
-          </div>
-        <% end %>
+    <% elsif @articles.nil? %>
+      <h1>BREHH THAT'S NOT A NEWS SOURCE!</h1>
+    <% else %>
+      <%# render @articles %>
+      <% @articles.each do |article| %>
+        <!-- semantic HTML rep of an article -->
+        <%# render article, article: article %>
+        <div class="container-text">
+          <%= link_to article["title"], article["url"] %><br>
+
+          <%= form_tag(saved_articles_path, method: "post", remote:true) do %>
+            <%= hidden_field_tag :source, params[:source] %>
+            <%= hidden_field_tag :title, article["title"] %>
+            <%= hidden_field_tag :link, article["url"] %>
+            <%= hidden_field_tag :image, article["urlToImage"] %>
+          <%= submit_tag 'Save' %>
+          <% end %>
+          <%= link_to article["url"] do %>
+            <%= image_tag article["urlToImage"] %>
+          <% end unless article["urlToImage"].blank? %>
+          <br>
+        </div>
+        <!-- article -->
       <% end %>
     <% end %>
 
