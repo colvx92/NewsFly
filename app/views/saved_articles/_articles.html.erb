@@ -1,0 +1,13 @@
+<% if @articles.count == 0 %>
+
+  <h4>You don't have any saved articles</h4>
+
+  <% else %>
+
+  <% @articles.each do |article| %>
+    <%= link_to article.title, article.link %><br>
+    <%= link_to article.link do %>
+      <%= image_tag article.image %>
+    <% end unless article.image.blank? %>
+  <% end %>
+<% end %>

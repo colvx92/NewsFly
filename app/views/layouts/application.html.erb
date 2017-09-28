@@ -15,7 +15,12 @@
       <%= link_to 'Login', '/login' %> | <%= link_to 'Signup', '/signup' %>
     <% end %>
 
+    <% if current_user %>
+      Signed in as <%= current_user.name %> | <%= link_to "Your Articles", '/my_articles' %>
+    <% else %>
+      <%= link_to 'Login', '/login' %> | <%= link_to 'Signup', '/signup' %>
+    <% end %>
+
     <%= yield %>
-    <!-- <%= console if Rails.env.development? %> -->
   </body>
 </html>

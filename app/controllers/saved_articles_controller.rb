@@ -23,7 +23,7 @@ class SavedArticlesController < ApplicationController
 
   def destroy
     @article.destroy
-    redirect_to root_path
+    redirect_to my_articles_path
   end
 
   private

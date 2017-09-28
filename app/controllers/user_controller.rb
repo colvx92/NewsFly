@@ -5,4 +5,9 @@ class UserController < ApplicationController
       @articles = Api.articles(parsed)
     end
   end
+
+  def show
+    @articles = current_user.saved_articles
+  end
+
 end

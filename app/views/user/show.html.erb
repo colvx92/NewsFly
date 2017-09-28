@@ -1,0 +1,9 @@
+<div class="container-top">
+<h1>Your Articles</h1>
+</div>
+
+
+<div class="container-body">
+  <%= render 'saved_articles/articles' %>
+  <%= link_to "Delete", my_articles_path(@article), method: :delete, data: { confirm: "Are you sure"} %>
+</div>
