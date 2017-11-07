@@ -1,10 +1,8 @@
 <div class="container-top">
 <h1>NewsFly</h1>
-<p class="ex">example: ars technica</p>
 
 <%= render 'form' %>
 <p></p>
-
 
 
   <!-- <%= @articles.inspect %> -->
@@ -19,9 +17,9 @@
 </div>
 <div class="container-body">
     <% if params[:source].blank? %>
-      <h1>Search!</h1>
+      <!-- <h1>Search!</h1> -->
     <% elsif @articles.nil? %>
-      <h1>BREHH THAT'S NOT A NEWS SOURCE!</h1>
+      <!-- <h1>BREHH THAT'S NOT A NEWS SOURCE!</h1> -->
     <% else %>
       <%# render @articles %>
       <% @articles.each do |article| %>
